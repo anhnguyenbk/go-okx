@@ -53,8 +53,13 @@ func (c *Client) Do(req api.IRequest, resp api.IResponse) error {
 	if err := json.Unmarshal(data, &resp); err != nil {
 		return err
 	}
+
 	if !resp.IsOk() {
-		return NewOKXError(resp.GetCode(), resp.GetMessage(), resp.GetDataAsString())
+		var errResp OKXErrorResp
+		if err := json.Unmarshal(data, &errResp); err != nil {
+			return err
+		}
+		return errResp
 	}
 
 	return nil
