@@ -5,7 +5,7 @@ golang sdk for https://www.okx.com/docs-v5
 
 go get：
 ```shell
-go get github.com/iaping/go-okx
+go get github.com/anhnguyenbk/go-okx
 ```
 
 ## Example
